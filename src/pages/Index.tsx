@@ -246,11 +246,11 @@ const Index = () => {
       <section className="py-12 sm:py-20 luxury-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
+            <h2 className="text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
               <Shield className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
-              AI Body Scan Benefits
+              Perfect Fit Technology
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto px-4">
               Revolutionary technology that ensures perfect fit every time with complete privacy and precision.
             </p>
           </div>
@@ -286,15 +286,116 @@ const Index = () => {
         </div>
       </section>
 
+      {/* BRAND SHOWCASE SECTION 1 */}
+      <section className="py-12 sm:py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">Crafted for Excellence</h2>
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                Every piece in our collection is meticulously designed and crafted using premium materials. 
+                Our models showcase the perfect blend of comfort, style, and sophistication that defines the RARITONE experience.
+              </p>
+              <button
+                onClick={() => navigate('/catalog')}
+                className="bg-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-amber-700 transition-all duration-300 transform hover:scale-105"
+              >
+                Explore Collection
+              </button>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="Raritone Collection/Bold vibe Oversize Tshirt.jpg"
+                  alt="RARITONE Model Showcase"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 w-24 h-24 bg-amber-500 rounded-full flex items-center justify-center shadow-lg"
+              >
+                <span className="text-white font-bold text-sm">NEW</span>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* BRAND SHOWCASE SECTION 2 */}
+      <section className="py-12 sm:py-20 bg-gradient-to-r from-amber-100 to-orange-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative order-2 lg:order-1"
+            >
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="Raritone Collection/Hoddie1(F).jpg"
+                  alt="RARITONE Premium Collection"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
+              >
+                <span className="text-white font-bold text-xs">AI</span>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">AI-Powered Precision</h2>
+              <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                Our advanced AI technology analyzes thousands of data points to recommend the perfect size and style for your unique body type. 
+                Experience fashion that truly understands you.
+              </p>
+              <button
+                onClick={() => navigate('/scan')}
+                className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105"
+              >
+                Try Body Scan
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* SHOP BY CATEGORY SECTION (ONLY 3 CATEGORIES) */}
       <section className="py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-16">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
+            <h2 className="text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
               <TrendingUp className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
-              Shop by Category
+              Curated Collections
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto px-4">
               Explore our curated collection of premium fashion categories.
             </p>
           </div>
@@ -334,22 +435,22 @@ const Index = () => {
       <section className="py-12 sm:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <div className="text-center">
-            <h2 className="hero-title mb-4 flex items-center justify-center">
+            <h2 className="text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
               <Star className="mr-3" size={isMobile ? 24 : 32} color="var(--primary-accent)" />
               What Our Customers Say
             </h2>
-            <p className="hero-subtitle max-w-2xl mx-auto px-4">
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto px-4">
               Join thousands of satisfied customers who love our AI-powered fashion experience.
             </p>
           </div>
         </div>
 
         <div className="relative">
-          <div className="review-slider flex space-x-6">
-            {[...reviews, ...reviews].map((review, index) => (
+          <div className="review-slider flex">
+            {[...reviews, ...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 w-80 luxury-card p-6 mx-3"
+                className="flex-shrink-0 w-80 luxury-card p-6 mr-6"
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-[var(--primary-accent)] flex items-center justify-center text-black font-semibold mr-4">
@@ -393,10 +494,11 @@ const Index = () => {
               <div>
                 <h3 className="font-semibold text-[var(--text-primary)] mb-4 text-base sm:text-lg">Quick Links</h3>
                 <ul className="space-y-2">
-                  <li><a href="#about" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">About Us</a></li>
-                  <li><a href="#privacy" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Privacy Policy</a></li>
-                  <li><a href="#returns" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Returns & Exchanges</a></li>
-                  <li><a href="#contact" className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Contact Us</a></li>
+                  <li><button onClick={() => navigate('/about')} className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">About Us</button></li>
+                  <li><button onClick={() => navigate('/privacy')} className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Privacy Policy</button></li>
+                  <li><button onClick={() => navigate('/returns')} className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Returns & Exchanges</button></li>
+                  <li><button onClick={() => navigate('/contact')} className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Contact Us</button></li>
+                  <li><button onClick={() => navigate('/reviews')} className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] text-sm sm:text-base transition-colors">Customer Reviews</button></li>
                 </ul>
               </div>
 

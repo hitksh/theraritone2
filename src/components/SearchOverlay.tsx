@@ -114,11 +114,12 @@ const SearchOverlay: React.FC<SearchOverlayProps> = ({ isOpen, onClose }) => {
   };
 
   const handleProductClick = (product: Product) => {
-    window.location.href = `/product/${product.id}`;
+    navigate('/search');
   };
 
   const handleTrendingClick = (term: string) => {
     setSearchQuery(term);
+    navigate('/search');
   };
 
   if (!isOpen) return null;

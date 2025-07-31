@@ -224,28 +224,16 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
             <div className="flex items-center space-x-1 sm:space-x-2 w-24 sm:w-32 justify-end">
               <button
                 onClick={onSearchOpen}
-                className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center"
+                className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[48px] min-w-[48px] flex items-center justify-center"
               >
-                <Search size={20} />
-              </button>
-              
-              <button 
-                onClick={() => navigate('/wishlist')}
-                className="relative text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center"
-              >
-                <Heart size={20} />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[var(--error-color)] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                    {wishlistCount}
-                  </span>
-                )}
+                <Search size={24} />
               </button>
 
               <button
                 onClick={() => navigate('/cart')}
-                className="relative text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center"
+                className="relative text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[48px] min-w-[48px] flex items-center justify-center"
               >
-                <ShoppingBag size={20} />
+                <ShoppingBag size={24} />
                 {cartItemsCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-[var(--primary-accent)] text-black text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
                     {cartItemsCount}
@@ -255,9 +243,9 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
               
               <button 
                 onClick={handleProfileClick}
-                className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center"
+                className="text-[var(--secondary-accent)] hover:text-[var(--primary-accent)] transition-colors px-4 p-2 rounded-lg min-h-[48px] min-w-[48px] flex items-center justify-center"
               >
-                <User size={20} />
+                <User size={24} />
               </button>
             </div>
           </div>
@@ -333,7 +321,6 @@ const Navbar: React.FC<NavbarProps> = memo(({ onSearchOpen, onCartOpen, pageTitl
                 {[
                   { label: 'Profile Info', path: '/profile' },
                   { label: 'Order History', path: '/orders' },
-                  { label: 'Saved Items', path: '/wishlist' },
                 ].map((action, index) => (
                   <button
                     key={action.label}

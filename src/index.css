@@ -5,36 +5,36 @@
 /* LUXURY EARTHY COLOR PALETTE */
 @layer base {
   :root {
-    --main-bg: #1B1C1E; /* Main Background */
-    --card-bg: #E5E0D8; /* Section Cards */
-    --primary-accent: #D1A980; /* Primary Accent */
-    --secondary-accent: #748873; /* Secondary Accent */
-    --text-primary: #000000; /* Primary Text */
-    --text-secondary: #748873; /* Secondary Text */
-    --border-color: #D1A980; /* Borders/Inputs */
+    --main-bg: #FEF7ED; /* Warm cream background */
+    --card-bg: #FFFFFF; /* Pure white cards */
+    --primary-accent: #F59E0B; /* Warm amber */
+    --secondary-accent: #92400E; /* Deep amber */
+    --text-primary: #1F2937; /* Dark gray text */
+    --text-secondary: #6B7280; /* Medium gray text */
+    --border-color: #F59E0B; /* Amber borders */
     --error-color: #FF6B6B; /* Error/Heart */
-    --navbar-bg: #232427; /* Navbar/Chat BG */
+    --navbar-bg: #FFFFFF; /* White navbar */
 
     /* Tailwind Variables */
-    --background: 27 28 30; /* #1B1C1E */
-    --foreground: 0 0 0; /* #000000 */
-    --card: 229 224 216; /* #E5E0D8 */
-    --card-foreground: 0 0 0; /* #000000 */
-    --popover: 229 224 216; /* #E5E0D8 */
-    --popover-foreground: 0 0 0; /* #000000 */
-    --primary: 209 169 128; /* #D1A980 */
-    --primary-foreground: 0 0 0; /* Black text on primary */
-    --secondary: 116 136 115; /* #748873 */
-    --secondary-foreground: 0 0 0; /* #000000 */
-    --muted: 116 136 115; /* #748873 */
-    --muted-foreground: 116 136 115; /* #748873 */
-    --accent: 209 169 128; /* #D1A980 */
-    --accent-foreground: 0 0 0; /* #000000 */
+    --background: 254 247 237; /* #FEF7ED */
+    --foreground: 31 41 55; /* #1F2937 */
+    --card: 255 255 255; /* #FFFFFF */
+    --card-foreground: 31 41 55; /* #1F2937 */
+    --popover: 255 255 255; /* #FFFFFF */
+    --popover-foreground: 31 41 55; /* #1F2937 */
+    --primary: 245 158 11; /* #F59E0B */
+    --primary-foreground: 255 255 255; /* White text on primary */
+    --secondary: 146 64 14; /* #92400E */
+    --secondary-foreground: 255 255 255; /* #FFFFFF */
+    --muted: 107 114 128; /* #6B7280 */
+    --muted-foreground: 107 114 128; /* #6B7280 */
+    --accent: 245 158 11; /* #F59E0B */
+    --accent-foreground: 255 255 255; /* #FFFFFF */
     --destructive: 255 107 107; /* #FF6B6B */
     --destructive-foreground: 255 255 255; /* #FFFFFF */
-    --border: 209 169 128; /* #D1A980 */
-    --input: 229 224 216; /* #E5E0D8 */
-    --ring: 209 169 128; /* #D1A980 */
+    --border: 245 158 11; /* #F59E0B */
+    --input: 255 255 255; /* #FFFFFF */
+    --ring: 245 158 11; /* #F59E0B */
     --radius: 0.75rem;
   }
 }
@@ -56,7 +56,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(to bottom, #1B1C1E, #232427, #2C2D31);
+    background: linear-gradient(to bottom, #FEF7ED, #FDF4E7, #FCF1E0);
     color: var(--text-primary);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -240,7 +240,7 @@
 
 /* REVIEW SLIDER STYLING */
 .review-slider {
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 40s linear infinite;
 }
 
 @keyframes scroll-left {
@@ -254,20 +254,51 @@
 
 /* NAVBAR TITLE MORPH ANIMATION */
 .navbar-title {
-  transition: all 0.5s ease;
-}
-
-.navbar-title:hover {
-  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
 }
 
 .navbar-logo {
-  transition: all 0.5s ease;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
+  transform: translateY(20px);
 }
 
-.navbar-title:hover + .navbar-logo {
+/* Smooth logo animation on scroll */
+.navbar-logo-visible {
   opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-title-hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Enhanced floating animation */
+@keyframes luxury-float {
+  0%, 100% { 
+    transform: translateY(0px) scale(1); 
+  }
+  50% { 
+    transform: translateY(-12px) scale(1.02); 
+  }
+}
+
+.luxury-float {
+  animation: luxury-float 6s ease-in-out infinite;
+}
+
+/* Smooth scroll-triggered animations */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* SECTION DIVIDERS */
