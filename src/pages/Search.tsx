@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, TrendingUp, X, Filter } from 'lucide-react';
+import { Search as SearchIcon, TrendingUp, X, Filter } from 'lucide-react';
 import { searchProducts, getLatestProducts, Product } from '@/lib/product';
 import { useAuth } from '@/contexts/AuthContext';
 import { addRecentSearch } from '@/lib/user';
@@ -10,7 +10,7 @@ import ProductModal from '@/components/ProductModal';
 import { useToast } from '@/components/ToastContainer';
 import { addToCart } from '@/lib/user';
 
-const Search = () => {
+const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
@@ -29,13 +29,12 @@ const Search = () => {
 
   const trendingSearches = ['luxury shirts', 'designer jeans', 'evening wear', 'casual tops', 'accessories'];
 
-  // Mock products for search
   const mockProducts: Product[] = [
     {
       id: '1',
       name: 'Bold vibe Oversize Tshirt',
       description: 'Luxury cotton t-shirt with premium finish and exceptional comfort.',
-      price: 696.00,
+      price: 696.0,
       imageURL: 'Raritone Collection/Bold vibe Oversize Tshirt.jpg',
       category: 'Tops',
       stock: 10,
@@ -60,7 +59,7 @@ const Search = () => {
       id: '3',
       name: 'Kiss me again Oversize Tshirt',
       description: 'Soft premium fabric with chic modern design.',
-      price: 399.20,
+      price: 399.2,
       imageURL: 'Raritone Collection/Kiss me again.jpeg',
       category: 'Tops',
       stock: 8,
@@ -102,20 +101,18 @@ const Search = () => {
 
     setIsLoading(true);
     try {
-      // Filter mock products based on search query
-      const results = mockProducts.filter(p => 
+      const results = mockProducts.filter((p) =>
         p.name.toLowerCase().includes(query.toLowerCase()) ||
         p.description.toLowerCase().includes(query.toLowerCase()) ||
-        p.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+        p.tags.some((tag) => tag.toLowerCase().includes(query.toLowerCase()))
       );
-      
+
       setSearchResults(results);
-      
-      // Add to recent searches
-      const updated = [query, ...recentSearches.filter(s => s !== query)].slice(0, 5);
+
+      const updated = [query, ...recentSearches.filter((s) => s !== query)].slice(0, 5);
       setRecentSearches(updated);
       localStorage.setItem('recentSearches', JSON.stringify(updated));
-      
+
       if (user) {
         await addRecentSearch(user.uid, query);
       }
@@ -181,15 +178,14 @@ const Search = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
-      <Navbar 
+      <Navbar
         onSearchOpen={() => {}}
         onCartOpen={() => {}}
         pageTitle="Search"
         showBackButton={true}
       />
-      
+
       <div className="pt-20 max-w-6xl mx-auto px-4 py-8">
-        {/* Search Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Search Products</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -197,10 +193,9 @@ const Search = () => {
           </p>
         </div>
 
-        {/* Search Bar */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
           <div className="relative mb-4">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={24} />
+            <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={24} />
             <input
               type="text"
               placeholder="Search for products, brands, or styles..."
@@ -218,11 +213,10 @@ const Search = () => {
             )}
           </div>
 
-          {/* Filters */}
           <div className="flex flex-wrap gap-4">
             <select
               value={filters.category}
-              onChange={(e) => setFilters({...filters, category: e.target.value})}
+              onChange={(e) => setFilters({ ...filters, category: e.target.value })}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
             >
               <option value="">All Categories</option>
@@ -234,7 +228,7 @@ const Search = () => {
 
             <select
               value={filters.priceRange}
-              onChange={(e) => setFilters({...filters, priceRange: e.target.value})}
+              onChange={(e) => setFilters({ ...filters, priceRange: e.target.value })}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
             >
               <option value="">All Prices</option>
@@ -246,7 +240,7 @@ const Search = () => {
 
             <select
               value={filters.sortBy}
-              onChange={(e) => setFilters({...filters, sortBy: e.target.value})}
+              onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-amber-500"
             >
               <option value="relevance">Relevance</option>
@@ -257,14 +251,12 @@ const Search = () => {
           </div>
         </div>
 
-        {/* Loading */}
         {isLoading && (
           <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600"></div>
           </div>
         )}
 
-        {/* Search Results */}
         {searchResults.length > 0 && !isLoading && (
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">
@@ -297,7 +289,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Trending Searches */}
         {!searchQuery && (
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
@@ -318,7 +309,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Recent Searches */}
         {recentSearches.length > 0 && !searchQuery && (
           <div className="mb-8">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Recent Searches</h3>
@@ -336,7 +326,6 @@ const Search = () => {
           </div>
         )}
 
-        {/* Suggested Products */}
         {suggestedProducts.length > 0 && !searchQuery && (
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Discover New Arrivals</h3>
@@ -367,11 +356,10 @@ const Search = () => {
           </div>
         )}
 
-        {/* No Results */}
         {searchQuery && searchResults.length === 0 && !isLoading && (
           <div className="text-center py-12">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 flex items-center justify-center">
-              <Search size={32} className="text-gray-400" />
+              <SearchIcon size={32} className="text-gray-400" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">No results found</h3>
             <p className="text-gray-600 mb-6">
@@ -387,7 +375,6 @@ const Search = () => {
         )}
       </div>
 
-      {/* Product Modal */}
       <ProductModal
         product={selectedProduct}
         isOpen={isModalOpen}
@@ -402,4 +389,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchPage;
